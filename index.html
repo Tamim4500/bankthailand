@@ -1444,6 +1444,11 @@
         .form-totals { padding: 12px 8px; gap: 6px; }
         .total-item { padding: 6px; font-size: 11px; }
         .submit-btn { padding: 10px; font-size: 13px; }
+        
+        /* MOBILE: Hide extra bet rows to reduce form size */
+        .bet-row:nth-child(n+4) { display: none !important; }
+        .betting-form-wrapper { max-height: 70vh; overflow-y: auto; }
+        
         .modal-content { width: 95%; max-width: 100%; padding: 12px; border-radius: 8px; }
         .modal-header { padding: 10px; }
         .modal-header h2 { font-size: 16px; }
@@ -1487,8 +1492,9 @@
         .welcome-tabs button { font-size: 10px; padding: 6px 8px; }
         .results-grid { gap: 8px; }
         .num { width: 24px; height: 24px; font-size: 11px; }
-        .betting-form-wrapper { padding: 10px 6px; }
+        .betting-form-wrapper { padding: 10px 6px; max-height: 65vh; overflow-y: auto; }
         .bet-row { grid-template-columns: 40px 1fr 0.7fr 0.7fr; gap: 3px; padding: 4px; }
+        .bet-row:nth-child(n+3) { display: none !important; }
         .modal-content { width: 98%; padding: 10px; }
         .login-input { font-size: 12px; padding: 6px 8px; }
         .payment-methods-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -2699,17 +2705,24 @@
       function loadPaymentsFromFirebase(callback) {
         const db = getDB();
         if (!db) {
-          // Fallback to localStorage
-          const saved = localStorage.getItem('paymentData');
-          if (saved) {
-            try {
-              const data = JSON.parse(saved);
-              callback(data.pending || [], data.approved || []);
-            } catch (e) {
-              console.warn('Failed to parse saved payment data:', e);
+          // Fallback to localStorage (prefer per-user key when available)
+          try {
+            const uid = localStorage.getItem('userId');
+            const key = uid ? `paymentData_${uid}` : 'paymentData';
+            const saved = localStorage.getItem(key);
+            if (saved) {
+              try {
+                const data = JSON.parse(saved);
+                callback(data.pending || [], data.approved || []);
+              } catch (e) {
+                console.warn('Failed to parse saved payment data:', e);
+                callback([], []);
+              }
+            } else {
               callback([], []);
             }
-          } else {
+          } catch (e) {
+            console.warn('LocalStorage read error:', e);
             callback([], []);
           }
           return;
@@ -2756,15 +2769,22 @@
             callback(pending, approved);
           }).catch(err => {
             console.warn('Firebase read error, using localStorage fallback:', err);
-            const saved = localStorage.getItem('paymentData');
-            if (saved) {
-              try {
-                const data = JSON.parse(saved);
-                callback(data.pending || [], data.approved || []);
-              } catch (e) {
+            try {
+              const uid = localStorage.getItem('userId');
+              const key = uid ? `paymentData_${uid}` : 'paymentData';
+              const saved = localStorage.getItem(key);
+              if (saved) {
+                try {
+                  const data = JSON.parse(saved);
+                  callback(data.pending || [], data.approved || []);
+                } catch (e) {
+                  callback([], []);
+                }
+              } else {
                 callback([], []);
               }
-            } else {
+            } catch (e) {
+              console.warn('LocalStorage fallback failed:', e);
               callback([], []);
             }
           });
@@ -3075,7 +3095,13 @@
           (async function syncReceiptsToFirebase(){
             if (!firebaseReady || !database) return;
             try {
-              const saved = localStorage.getItem('paymentData');
+              // Prefer per-user local copy when present, fall back to global for older installs
+              let saved = null;
+              try {
+                saved = localStorage.getItem(`paymentData_${userId}`) || localStorage.getItem('paymentData');
+              } catch (e) {
+                saved = localStorage.getItem('paymentData');
+              }
               if (!saved) return;
               const payments = JSON.parse(saved) || { approved: [], pending: [] };
               const allPayments = [...(payments.approved || []), ...(payments.pending || [])];
@@ -4452,10 +4478,16 @@
             const v = snap.val();
             const all = [];
             if (!v) {
-              // fallback to local
-              const saved = localStorage.getItem('paymentData');
-              const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
-              renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+              // fallback to local (prefer per-user key)
+              try {
+                const key = userId ? `paymentData_${userId}` : 'paymentData';
+                const saved = localStorage.getItem(key);
+                const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
+                renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+              } catch (e) {
+                console.warn('Failed to read local receipts fallback', e);
+                renderPayments([]);
+              }
               return;
             }
 
@@ -4467,26 +4499,45 @@
             renderPayments(all);
           }).catch(err => {
             console.warn('Failed to load receipts from Firebase, falling back to local:', err);
-            const saved = localStorage.getItem('paymentData');
-            const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
-            renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+            try {
+              const key = userId ? `paymentData_${userId}` : 'paymentData';
+              const saved = localStorage.getItem(key);
+              const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
+              renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+            } catch (e) {
+              console.warn('Local fallback failed', e);
+              renderPayments([]);
+            }
           });
         } else {
-          // fallback to localStorage
-          const saved = localStorage.getItem('paymentData');
-          const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
-          renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+          // fallback to localStorage (prefer per-user key)
+          try {
+            const key = userId ? `paymentData_${userId}` : 'paymentData';
+            const saved = localStorage.getItem(key);
+            const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
+            renderPayments([...(payments.approved || []), ...(payments.pending || [])]);
+          } catch (e) {
+            console.warn('Local fallback read failed', e);
+            renderPayments([]);
+          }
         }
       }
     })();
 
     // Function to view receipt from history
     window.viewReceiptFromHistory = async function(receiptId) {
-      // Try localStorage first
-      const saved = localStorage.getItem('paymentData');
-      const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
-      const allPayments = [...(payments.approved || []), ...(payments.pending || [])];
-      let payment = allPayments.find(p => p.id === receiptId || p.receiptNumber === receiptId);
+      // Try localStorage first (prefer per-user key)
+      let payment = null;
+      try {
+        const uid = localStorage.getItem('userId');
+        const key = uid ? `paymentData_${uid}` : 'paymentData';
+        const saved = localStorage.getItem(key);
+        const payments = saved ? JSON.parse(saved) : { approved: [], pending: [] };
+        const allPayments = [...(payments.approved || []), ...(payments.pending || [])];
+        payment = allPayments.find(p => p.id === receiptId || p.receiptNumber === receiptId);
+      } catch (e) {
+        console.warn('Failed to read local receipts for viewing:', e);
+      }
 
       // If not found locally and Firebase available, try server for this user
       if (!payment && typeof firebase !== 'undefined' && firebase.database) {
