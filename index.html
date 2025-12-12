@@ -1316,6 +1316,183 @@
       .welcome-actions .btn { padding:10px 16px; border-radius:10px; font-weight:700; }
       .welcome-actions .btn.primary { background: linear-gradient(90deg,#0db0ff,#1db7ff); color:#012; }
       .welcome-actions .btn.ghost { background:transparent; border:1px solid rgba(255,255,255,0.06); color:#dbefff; }
+
+      /* ===== MOBILE IMPROVEMENTS ===== */
+      @media (max-width: 768px) {
+        body { font-size: 14px; }
+        .topbar { padding: 8px 12px; flex-direction: column; gap: 8px; }
+        .logo img { height: 32px; }
+        .stats { display: none !important; }
+        .auth { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+        .btn { padding: 10px 14px; font-size: 12px; }
+        .btn.primary { padding: 12px 16px; font-size: 13px; }
+        .hero { min-height: 300px; }
+        .hero-content h1 { font-size: 22px; }
+        .hero-content .subtitle { font-size: 13px; }
+        .hero-arrow { width: 32px; height: 32px; font-size: 20px; }
+        .features { grid-template-columns: 1fr; gap: 16px; padding: 16px 12px; }
+        .feature { gap: 12px; }
+        .feature .icon { width: 48px; min-width: 48px; }
+        .welcome { padding: 20px 12px; }
+        .welcome h2 { font-size: 20px; }
+        .welcome .intro-text, .welcome .glo36-info { font-size: 13px; }
+        .welcome-tabs { gap: 8px; flex-wrap: wrap; }
+        .welcome-tabs button { padding: 10px 12px; font-size: 12px; }
+        .exchange { padding: 20px 12px; }
+        .exchange-cards { grid-template-columns: 1fr; }
+        .exchange-card { padding: 20px 16px; }
+        .dollar-rate { padding: 20px 12px; }
+        .rate-calculator { gap: 8px; flex-wrap: wrap; }
+        .rate-calculator input, .rate-calculator select { padding: 8px 12px; font-size: 12px; }
+        .results-section { padding: 20px 12px; }
+        .results-grid { grid-template-columns: 1fr; gap: 12px; }
+        .result-card { padding: 12px; }
+        .result-thumb { height: 150px; }
+        .small-list { font-size: 12px; }
+        .small-list li { padding: 6px 0; }
+        .winners-list { padding: 12px; }
+        .winner-item { font-size: 12px; gap: 8px; padding: 8px; }
+        .live-results-grid { grid-template-columns: 1fr; }
+        .live-result-card { padding: 16px; }
+        .result-numbers { gap: 12px; }
+        .number-group { gap: 6px; }
+        .numbers-row { gap: 4px; flex-wrap: wrap; }
+        .num { width: 32px; height: 32px; font-size: 14px; }
+        .num.small { width: 28px; height: 28px; font-size: 12px; }
+        .rates-table { font-size: 12px; }
+        .rates-table th, .rates-table td { padding: 8px 6px; }
+        .betting-form-wrapper { padding: 16px 12px; }
+        .form-header { flex-direction: column; gap: 10px; font-size: 14px; }
+        .play-type-buttons { gap: 8px; flex-wrap: wrap; }
+        .play-type-btn { padding: 8px 12px; font-size: 12px; }
+        .bet-row { grid-template-columns: 50px 1fr 1fr 1fr; gap: 6px; padding: 8px; }
+        .bet-input, .amount-input { padding: 6px 8px; font-size: 12px; }
+        .form-totals { gap: 8px; }
+        .total-item { padding: 8px; font-size: 12px; }
+        .submit-btn { padding: 12px; font-size: 14px; }
+        .modal-content { width: 90%; max-width: 95vw; padding: 16px; }
+        .modal-header { padding: 12px; }
+        .modal-header h2 { font-size: 18px; }
+        .login-body { padding: 16px; }
+        .login-input { padding: 10px 12px; font-size: 14px; }
+        .login-btn { padding: 12px; font-size: 14px; }
+        .payment-summary { padding: 12px; }
+        .summary-row { padding: 8px 0; font-size: 13px; }
+        .payment-methods-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .payment-method-btn { padding: 12px 8px; }
+        .payment-method-btn span { font-size: 11px; }
+        .receipt-body { padding: 16px 12px; }
+        .receipt-section { padding: 10px 0; }
+        .receipt-label { font-size: 11px; }
+        .receipt-value { font-size: 13px; }
+        .receipt-number { font-size: 14px; }
+        .admin-panel-content { width: 90%; max-width: 95vw; max-height: 80vh; }
+        .pending-list, .approved-list { gap: 10px; }
+        .payment-item { padding: 12px; }
+        .footer-nav, .footer-links, .footer-legal { flex-wrap: wrap; gap: 8px; }
+        .footer-nav a, .footer-links a, .footer-legal a { font-size: 12px; }
+        .footer-columns { grid-template-columns: 1fr; }
+        .footer-col a { font-size: 12px; display: block; padding: 4px 0; }
+        .rate-note { font-size: 11px; }
+      }
+
+      @media (max-width: 480px) {
+        body { font-size: 13px; }
+        .topbar { padding: 8px; flex-direction: row; }
+        .stats { display: none !important; }
+        .auth { gap: 6px; }
+        .btn { padding: 8px 10px; font-size: 11px; }
+        .hero { min-height: 250px; }
+        .hero-content h1 { font-size: 18px; }
+        .hero-content .subtitle { font-size: 12px; }
+        .play-btn { padding: 10px 20px; font-size: 12px; }
+        .features { grid-template-columns: 1fr; padding: 12px 8px; }
+        .welcome h2 { font-size: 18px; }
+        .welcome .intro-text { font-size: 12px; }
+        .exchange h2 { font-size: 18px; }
+        .exchange .subtitle { font-size: 12px; }
+        .welcome-tabs { gap: 6px; flex-direction: column; }
+        .welcome-tabs button { padding: 8px 10px; font-size: 11px; width: 100%; }
+        .exchange-cards { grid-template-columns: 1fr; }
+        .exchange-card { padding: 16px 12px; }
+        .exchange-card h3 { font-size: 18px; }
+        .exchange-card button { padding: 10px 16px; font-size: 12px; }
+        .rate-calculator { gap: 6px; flex-wrap: wrap; }
+        .rate-calculator input { padding: 8px; font-size: 12px; flex: 1; min-width: 60px; }
+        .rate-calculator select { padding: 8px; font-size: 12px; flex: 1; }
+        .results-grid { grid-template-columns: 1fr; gap: 10px; }
+        .result-card { padding: 10px; }
+        .result-thumb { height: 120px; }
+        .ribbon { font-size: 11px; }
+        .small-list li { padding: 4px 0; font-size: 11px; }
+        .live-result-card { padding: 12px; }
+        .number-group { gap: 4px; }
+        .num { width: 28px; height: 28px; font-size: 12px; }
+        .num.small { width: 24px; height: 24px; font-size: 10px; }
+        .rates-table { font-size: 11px; }
+        .rates-table th { padding: 6px 4px; font-size: 10px; }
+        .rates-table td { padding: 6px 4px; font-size: 11px; }
+        .betting-form-wrapper { padding: 12px 8px; }
+        .form-header { padding: 8px; }
+        .form-header h2 { font-size: 16px; }
+        .balance-display { font-size: 12px; }
+        .play-type-buttons { gap: 6px; }
+        .play-type-btn { padding: 6px 10px; font-size: 11px; }
+        .section-title { font-size: 12px; }
+        .bet-row { grid-template-columns: 45px 1fr 0.8fr 0.8fr; gap: 4px; padding: 6px; }
+        .bet-input, .amount-input { padding: 6px; font-size: 11px; }
+        .form-totals { padding: 12px 8px; gap: 6px; }
+        .total-item { padding: 6px; font-size: 11px; }
+        .submit-btn { padding: 10px; font-size: 13px; }
+        .modal-content { width: 95%; max-width: 100%; padding: 12px; border-radius: 8px; }
+        .modal-header { padding: 10px; }
+        .modal-header h2 { font-size: 16px; }
+        .modal-close { font-size: 24px; }
+        .login-body { padding: 12px; }
+        .login-title { font-size: 14px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { font-size: 11px; }
+        .login-input { padding: 8px 10px; font-size: 13px; }
+        .login-btn { padding: 10px; font-size: 13px; width: 100%; }
+        .payment-summary { padding: 10px; }
+        .summary-row { padding: 6px 0; font-size: 12px; }
+        .payment-methods-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .payment-method-btn img { height: 24px; }
+        .payment-method-btn span { font-size: 10px; }
+        .receipt-body { padding: 12px; }
+        .receipt-title { font-size: 14px; }
+        .receipt-divider { margin: 8px 0; }
+        .receipt-section { padding: 8px 0; }
+        .receipt-label { font-size: 10px; }
+        .receipt-value { font-size: 12px; }
+        .receipt-footer p { font-size: 11px; }
+        .receipt-print-btn { padding: 8px 12px; font-size: 11px; }
+        .admin-panel-content { width: 95%; max-width: 100%; padding: 12px; }
+        .admin-header { padding: 10px; }
+        .admin-header h2 { font-size: 16px; }
+        .tab-button { padding: 6px 10px !important; font-size: 11px !important; }
+        .footer-container { padding: 16px 12px; }
+        .counter-number { font-size: 18px; }
+        .counter-text { font-size: 10px; }
+        .payment-icons { gap: 6px; }
+        .pay-card { width: 40px; height: 40px; }
+      }
+
+      @media (max-width: 360px) {
+        .topbar { padding: 6px; }
+        .hero-content h1 { font-size: 16px; }
+        .features { padding: 10px 6px; }
+        .welcome h2 { font-size: 16px; }
+        .exchange h2 { font-size: 16px; }
+        .welcome-tabs button { font-size: 10px; padding: 6px 8px; }
+        .results-grid { gap: 8px; }
+        .num { width: 24px; height: 24px; font-size: 11px; }
+        .betting-form-wrapper { padding: 10px 6px; }
+        .bet-row { grid-template-columns: 40px 1fr 0.7fr 0.7fr; gap: 3px; padding: 4px; }
+        .modal-content { width: 98%; padding: 10px; }
+        .login-input { font-size: 12px; padding: 6px 8px; }
+        .payment-methods-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      }
   </style>
 </head>
 <body>
@@ -1963,11 +2140,20 @@
           </div>
           
           <div class="form-group">
+            <label for="userPasswordInput">Password</label>
+            <input type="password" id="userPasswordInput" placeholder="Enter your password" class="login-input" style="font-size:14px;">
+          </div>
+          
+          <div class="form-group">
             <label for="userNameInput">Your Name (Optional)</label>
             <input type="text" id="userNameInput" placeholder="Enter your name" class="login-input" style="font-size:14px;">
           </div>
           
           <button id="loginSubmitBtn" class="login-btn">LOGIN</button>
+          
+          <div style="margin-top:12px;text-align:center;font-size:12px;color:#999;">
+            💡 Don't have an account? <a href="#" onclick="alert('Contact admin to register'); return false;" style="color:#0db0ff;text-decoration:underline;">Register here</a>
+          </div>
         </div>
       </div>
     </div>
@@ -2591,29 +2777,45 @@
       // Function to save payments to Firebase
       function savePaymentsToFirebase(pending, approved) {
         const db = getDB();
+        const userId = localStorage.getItem('userId');
         
-        // Always save to localStorage as backup
+        // IMPORTANT: Save to per-user localStorage key (NOT global 'paymentData')
         try {
-          localStorage.setItem('paymentData', JSON.stringify({
-            pending: pending,
-            approved: approved,
-            lastUpdated: new Date().toISOString()
-          }));
+          if (userId) {
+            localStorage.setItem(`paymentData_${userId}`, JSON.stringify({
+              pending: pending,
+              approved: approved,
+              lastUpdated: new Date().toISOString()
+            }));
+          }
         } catch (e) {
           console.warn('Failed to save to localStorage:', e);
         }
 
-        // Try to save to Firebase if available
+        // Try to save to Firebase if available - BOTH root and per-user paths for admin access
         if (!db) return;
 
         try {
+          // Save to root 'payments' (for admin access to all payments)
           db.ref('payments').set({
             pending: pending,
             approved: approved,
             lastUpdated: new Date().toISOString()
           }).catch(err => {
-            console.warn('Firebase write error:', err);
+            console.warn('Firebase root write error:', err);
           });
+
+          // ALSO save to per-user path (users/{userId}/payments) for user-specific access
+          if (userId) {
+            pending.forEach(p => {
+              if (!p.id) p.id = 'loc-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,6);
+              db.ref(`users/${userId}/payments/${p.id}`).set(p).catch(err => console.warn('Per-user payment write error:', err));
+            });
+            approved.forEach(p => {
+              if (!p.id) p.id = 'loc-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,6);
+              db.ref(`users/${userId}/payments/${p.id}`).set(p).catch(err => console.warn('Per-user payment write error:', err));
+            });
+          }
         } catch (error) {
           console.warn('Firebase error:', error);
         }
@@ -2672,9 +2874,19 @@
         if (e && e.preventDefault) { e.preventDefault(); e.stopPropagation(); }
         console.log('✓ LOGOUT TRIGGERED');
         
-        // Clear all storage
+        // Get current user ID before clearing
+        const userId = localStorage.getItem('userId');
+        
+        // Clear ALL storage (global and per-user)
         try { localStorage.clear(); } catch (er) { console.warn('localStorage clear:', er); }
         try { sessionStorage.clear(); } catch (er) { console.warn('sessionStorage clear:', er); }
+        try { 
+          // Also clear any per-user keys from localStorage
+          if (userId) {
+            try { localStorage.removeItem(`paymentData_${userId}`); } catch (e) {}
+            try { localStorage.removeItem(`receipts_${userId}`); } catch (e) {}
+          }
+        } catch (er) {}
         
         // Show logout message
         try {
@@ -2729,7 +2941,10 @@
         if (loginSubmitBtn) {
           loginSubmitBtn.addEventListener('click', () => {
             const userId = userIdInput.value.trim();
+            const userPassword = document.getElementById('userPasswordInput')?.value.trim() || '';
             const userName = document.getElementById('userNameInput')?.value.trim() || 'User ' + userId;
+
+            console.log('Login attempt:', { userId, password: userPassword ? '***' : 'empty', userName });
 
             if (!userId) {
               showNotification('Please enter your User ID','warn',{timeout:3000});
@@ -2737,25 +2952,74 @@
               return;
             }
 
-            // Check if User ID is "000000"
-          if (userId !== '000000') {
-            showNotification('Invalid User ID. Please try again.','warn',{timeout:3000});
-            userIdInput.focus();
-            return;
-          }
+            if (!userPassword) {
+              showNotification('Please enter your password','warn',{timeout:3000});
+              document.getElementById('userPasswordInput').focus();
+              return;
+            }
 
-          // Successful login - show beautiful notification
-          const loginNotification = document.createElement('div');
-          loginNotification.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:50px 40px;border-radius:15px;font-weight:700;z-index:3000;box-shadow:0 20px 60px rgba(16,185,129,0.4);animation:popIn 0.5s ease;max-width:450px;text-align:center;';
-          loginNotification.innerHTML = `
-            <div style="font-size:60px;margin-bottom:20px;">✓</div>
-            <div style="font-size:28px;margin-bottom:15px;">Login Successful!</div>
-            <div style="font-size:16px;opacity:0.95;margin-bottom:25px;line-height:1.6;">Welcome back, ${userName}!</div>
-            <div style="font-size:14px;opacity:0.85;">Redirecting in 2 seconds...</div>
-          `;
-          document.body.appendChild(loginNotification);
-          
-          localStorage.setItem('userLoggedIn', 'true');
+            // Simple validation: check demo credentials first
+            if (userId === '000000' && userPassword === '1234') {
+              console.log('Demo login successful');
+              performLogin();
+              return;
+            }
+
+            // Try Firebase validation for other users
+            function validateUserLogin() {
+              const db = getDB();
+              if (!db) {
+                // Fallback: allow demo login with User ID 000000 and password 1234
+                if (userId === '000000' && userPassword === '1234') {
+                  performLogin();
+                } else {
+                  showNotification('Invalid credentials or Firebase unavailable','warn',{timeout:3000});
+                  userIdInput.focus();
+                }
+                return;
+              }
+
+              // Check Firebase for user credentials
+              db.ref(`users/${userId}/credentials`).once('value').then(snap => {
+                const creds = snap.val();
+                if (!creds || !creds.password) {
+                  showNotification('User ID not found. Please register or contact admin.','warn',{timeout:3000});
+                  userIdInput.focus();
+                  return;
+                }
+
+                // Simple password check (in production, use bcrypt/hashing)
+                if (creds.password === userPassword) {
+                  performLogin();
+                } else {
+                  showNotification('Incorrect password. Please try again.','warn',{timeout:3000});
+                  document.getElementById('userPasswordInput').focus();
+                }
+              }).catch(err => {
+                console.warn('Firebase auth check failed:', err);
+                // Demo fallback
+                if (userId === '000000' && userPassword === '1234') {
+                  performLogin();
+                } else {
+                  showNotification('Login error. Please try again.','warn',{timeout:3000});
+                }
+              });
+            }
+
+            // Perform the actual login
+            function performLogin() {
+              // Successful login - show beautiful notification
+              const loginNotification = document.createElement('div');
+              loginNotification.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:50px 40px;border-radius:15px;font-weight:700;z-index:3000;box-shadow:0 20px 60px rgba(16,185,129,0.4);animation:popIn 0.5s ease;max-width:450px;text-align:center;';
+              loginNotification.innerHTML = `
+                <div style="font-size:60px;margin-bottom:20px;">✓</div>
+                <div style="font-size:28px;margin-bottom:15px;">Login Successful!</div>
+                <div style="font-size:16px;opacity:0.95;margin-bottom:25px;line-height:1.6;">Welcome back, ${userName}!</div>
+                <div style="font-size:14px;opacity:0.85;">Redirecting in 2 seconds...</div>
+              `;
+              document.body.appendChild(loginNotification);
+              
+              localStorage.setItem('userLoggedIn', 'true');
           localStorage.setItem('userId', userId);
           localStorage.setItem('userName', userName);
           sessionStorage.setItem('userSession', 'active');
@@ -2773,6 +3037,7 @@
           
           // Reset form and close modal
           userIdInput.value = '';
+          document.getElementById('userPasswordInput').value = '';
           document.getElementById('userNameInput').value = '';
           loginModal.classList.add('hidden');
 
@@ -2841,12 +3106,22 @@
               if (receiptBtn) receiptBtn.click();
             } catch (e) { console.warn('Failed to open receipt history automatically', e); }
           }, 700);
+            } // END performLogin()
+
+            // For non-demo users, validate against Firebase
+            validateUserLogin();
         });
         }
 
         // Allow Enter key to submit
         if (loginSubmitBtn && userIdInput) {
           userIdInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginSubmitBtn.click();
+          });
+        }
+        const userPasswordInput = document.getElementById('userPasswordInput');
+        if (loginSubmitBtn && userPasswordInput) {
+          userPasswordInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') loginSubmitBtn.click();
           });
         }
@@ -2919,22 +3194,36 @@
             customerNameDisplay.textContent = userName;
           }
 
-          // Load from Firebase for this user only
+          // Load from Firebase for this user only (most important - Firebase is source of truth)
           if (typeof firebase !== 'undefined' && firebase.database) {
             const db = firebase.database();
             db.ref(`users/${currentUserId}/payments`).once('value').then(snap => {
               const payments = snap.val() || {};
               const paymentArray = Array.isArray(payments) ? payments : Object.values(payments || {});
-              
+              console.log(`Loaded ${paymentArray.length} receipts for user ${currentUserId} from Firebase`);
               displayCustomerPaymentsList(paymentArray);
             }).catch(err => {
-              console.error('Error loading customer receipts:', err);
-              const list = document.getElementById('customerReceiptsList');
-              if (list) list.innerHTML = '<div class="empty-state">Error loading receipts</div>';
+              console.error('Error loading customer receipts from Firebase:', err);
+              // Try localStorage fallback with per-user key
+              const saved = localStorage.getItem(`paymentData_${currentUserId}`);
+              if (saved) {
+                try {
+                  const data = JSON.parse(saved);
+                  const allPayments = [...(data.approved || []), ...(data.pending || [])];
+                  displayCustomerPaymentsList(allPayments);
+                } catch (e) {
+                  const list = document.getElementById('customerReceiptsList');
+                  if (list) list.innerHTML = '<div class="empty-state">Error loading receipts</div>';
+                }
+              } else {
+                const list = document.getElementById('customerReceiptsList');
+                if (list) list.innerHTML = '<div class="empty-state">Error loading receipts</div>';
+              }
             });
           } else {
-            // Fallback to localStorage
-            const saved = localStorage.getItem('paymentData');
+            // Fallback to per-user localStorage key (NOT global paymentData)
+            const saved = localStorage.getItem(`paymentData_${currentUserId}`);
+            console.log(`Loading receipts for user ${currentUserId} from localStorage`);
             if (saved) {
               try {
                 const data = JSON.parse(saved);
@@ -2942,7 +3231,12 @@
                 displayCustomerPaymentsList(allPayments);
               } catch (e) {
                 console.warn('Error parsing saved payments:', e);
+                const list = document.getElementById('customerReceiptsList');
+                if (list) list.innerHTML = '<div class="empty-state">No receipts found</div>';
               }
+            } else {
+              const list = document.getElementById('customerReceiptsList');
+              if (list) list.innerHTML = '<div class="empty-state" style="text-align:center;padding:40px;color:#999;"><div style="font-size:48px;margin-bottom:10px;">📨</div><div style="font-size:16px;">No receipts yet</div><div style="font-size:12px;margin-top:10px;color:#666;">Make your first payment to see it here</div></div>';
             }
           }
         }
